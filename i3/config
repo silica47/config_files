@@ -188,5 +188,3 @@ bar {
 # Hide title bar for stacked/tabbed containers
 font pango:DejaVu Sans Mono 0
 
-#compton
-exec --no-startup-id compton --config ~/.config/compton.conf
