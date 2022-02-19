@@ -1,0 +1,24 @@
+[global_config]
+  borderless = True
+  suppress_multiple_term_dialog = True
+  putty_paste_style_source_clipboard = True
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Sans Bold 10
+    foreground_color = "#ffffff"
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
