@@ -39,7 +39,7 @@ bindsym $mod+q kill
 exec nitrogen --restore
 
 #picom
-exec_always --no-startup-id "picom --config .config/picom/picom.conf"
+exec_always --no-startup-id "picom -experimental-backend"
 
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
