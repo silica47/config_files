@@ -1,4 +1,4 @@
-[global_config]
+ [global_config]
   borderless = True
   suppress_multiple_term_dialog = True
   putty_paste_style_source_clipboard = True
