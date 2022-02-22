@@ -89,7 +89,7 @@
 
 ;;theme
 (use-package doom-themes
-      ;:ensure t
+      :ensure t
       :config
       (load-theme 'doom-molokai t)
       (doom-themes-org-config)
@@ -98,12 +98,12 @@
       (tool-bar-mode -1)
       (fringe-mode -1)
       (scroll-bar-mode -1))
-
 (setq inhibit-startup-message t) ;remove startup screen
 
+
 ;;disable menu and scrollbar
-;(tool-bar-mode -1)
-;(menu-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (scroll-bar-mode -1)
 
 (setq ring-bell-function 'ignore) ;disale the bell
