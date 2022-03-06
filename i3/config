@@ -27,7 +27,7 @@ font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
 # start a applications
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+n exec firefox
 bindsym $mod+b exec librewolf
 bindsym $mod+m exec discord
