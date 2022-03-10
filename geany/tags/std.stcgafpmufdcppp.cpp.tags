@@ -1,0 +1,249 @@
+#format=pipe 
+# @brief Geany tags for the C++ "Standard Library"
+# 
+# Geany Tags file for whatever people call the C++ "Standard Template Library". 
+# Some people argue whether to call it "STL", "stdlib", "standard STL", etc.
+# As part of a contest for the longest STL acronym in Freenode's #C++ channel, 
+# I eventually coined this completely unambiguous acronym for it:
+# STC-GA-FP-MU-FDCPPP : Standard Templated Containers, Generic Algorithms, 
+# Functional Programming and Miscellaneous Utilities Framework 
+# for the Development of C++ Programs.
+# 
+# @author Luis Machuca Bezzaza  <lambalicious@tuta.io>
+# @version 4
+# Nontrivial Container Constructors
+vector||<T>(Iterator begin, Iterator end)|
+vector||<T>(Integral count, T t0)|
+deque||<T>(Iterator begin, Iterator end)|
+deque||<T>(Integral count, T t0)|
+list||<T>(Iterator begin, Iterator end)|
+list||<T>(Integral count, T t0)|
+valarray||<T>(T const* pointer, size_type length)|
+forward_list||<T>(Iterator begin, Iterator end)|
+forward_list||<T>(Integral count, T t0)|
+# <algorithm>
+# ...to operate on values
+min|T|(T v1, T v2)|
+max|T|(T v1, T v2)|
+clamp|T|(T& val, T low, T high, Less lt)|
+clamp|T|(T& val, T low, T high)|
+# ...to query a sequence
+all_of|bool|(Iterator begin, Iterator end, Predicate if)|
+any_of|bool|(Iterator begin, Iterator end, Predicate if)|
+none_of|bool|(Iterator begin, Iterator end, Predicate if)|
+count|Integral|(Iterator begin, Iterator end, T value)|Counts ocurrences of 'value'
+count_if|Integral|(Iterator begin, Iterator end, Predicate if)|Counts ocurrences of predicate 'f(value)' being true
+find|Iterator|(Iterator begin, Iterator end, T value)|Finds an ocurrence of 'value'
+find_if|Iterator|(Iterator begin, Iterator end, Predicate if)|Finds an ocurrence of predicate 'f(value)' being true
+find_if_not|Iterator|(Iterator begin, Iterator end, Predicate if)|Finds an ocurrence of predicate 'f(value)' being false
+find_first_of|FwI1|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2)|
+find_first_of|FwI1|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2, Equality eq)|
+adjacent_find|FwI|(FwI begin, FwI end, Equality eq )|
+min_element|Iterator|(Iterator begin, Iterator end, Less lt)|
+min_element|Iterator|(Iterator begin, Iterator end)|
+max_element|Iterator|(Iterator begin, Iterator end, Less lt)|
+max_element|Iterator|(Iterator begin, Iterator end)|
+minmax_element|pair<FwI,FwI>|(Iterator begin, Iterator end, Less lt)|
+minmax_element|pair<FwI,FwI>|(Iterator begin, Iterator end)|
+is_sorted|bool|(FwI begin, FwI end, Less lt)|
+is_sorted_until|FwI marker|(FwI begin, FwI end, Less lt)|
+includes|bool|(Iterator1 begin, Iterator1 end, Iterator2 subset_begin, Iterator2 subset_end, Predicate less(x,y)->bool)|
+lower_bound|FwI marker_notless|(FwI begin, FwI end, T value, Less lt)|
+upper_bound|FwI marker_greater|(FwI begin, FwI end, T value, Less lt)|
+binary_search|bool|(Iterator begin, Iterator end, T value, Less lt)|Finds 'value' in a sorted sequence
+# ...to compare sequences
+equal|bool|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2)|
+equal|bool|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, Compare f(a,b))|Returns true if both sequences are identical
+equal|bool|(Iterator1 begin, Iterator1 end1, Iterator2 begin2, Iterator2 end2)|
+equal|bool|(Iterator1 begin, Iterator1 end1, Iterator2 begin2, Iterator2 end2, Compare f(a,b))|
+mismatch|pair<Iterator1,Iterator2>|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2)|Finds the positions where two sequences differ.
+mismatch|pair<Iterator1,Iterator2>|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, Compare = std::equal_to<T>)|Finds the positions where two sequences differ.
+mismatch|pair<Iterator1,Iterator2>|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, Iterator2 end2)|Finds the positions where two sequences differ.
+mismatch|pair<Iterator1,Iterator2>|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, Iterator2 end2, Compare = std::equal_to<T>)|Finds the positions where two sequences differ.
+lexicographical_compare|bool less|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2, Less lt)|
+lexicographical_compare|bool less|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2)|
+lexicographical_compare_three_way|std::strong_ordering::...|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2, Comp3way comp)|
+lexicographical_compare_three_way|std::strong_ordering::...|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2)|
+# ...to copy from a sequence
+copy|DestIt|(SrcIt begin, SrcIt end, DestIt target)|
+copy_if|DestIt|(SrcIt begin, SrcIt end, DestIt target, Predicate if)|
+copy_n|OutputIterator|(Iterator begin, Integral n, OutputIterator target)|
+copy_backward|OutputIterator|(Iterator begin, Iterator end, OutputIterator target_end)|
+move|OutputIterator|(Iterator begin, Iterator end, OutputIterator target)|Move elements in a sequence
+move_backward|OutputBidiIterator|(BidiIterator begin, BidiIterator end, OutputBidiIterator target_end)|
+partition_copy|pair<OIter1,OIter2>|(Iterator begin, Iterator end, OIter1 true_dest, OIter2 false_dest, Predicate f(x)->bool)|
+# ...to modify a sequence
+fill|void|(OutputIterator begin, OutputIterator end, value)|Fills sequence with 'value'
+fill_n|void|(OutputIterator begin, Integral n, value)|Fills 'n' positions with 'value'
+generate|void|(OutputIterator begin, OutputIterator end, Generator g()->T)|Fills sequence with value calls to 'g()'
+generate_n|void|(OutputIterator begin, Integral n, Generator g()->T)|Fills 'n' positions with value calls to 'g()'
+remove|FwIt|(FwIt begin, FwIt end, T const& value)|"Removes" 'value' elements and returns new end marker for .erase
+remove_copy|Output|(Input begin, Input end, Output target, T const& value)|
+remove_if|FwIt|(FwIt begin, FwIt end, Predicate p)|"Removes" 'value' elements and returns new end marker for .erase
+remove_copy_if|Output|(Input begin, Input end, Output target, Predicate p)|
+replace|void|(FwI begin, FwI end, T old, T new)|
+replace_if|void|(FwI begin, FwI end, Predicate f(T), T new)|
+replace_copy|Output|(Input begin, Input end, Output dest_begin, T old, T new)|
+replace_copy_if|Output|(Input begin, Input end, Output dest_begin, Predicate f(T), T new)|
+unique|Iterator new_end|(Iterator begin, Iterator end, Compare = std::equal<T>)|
+unique_copy|Output new_end|(Input begin, Input end, Output target, Compare = std::equal<T>)|
+for_each|Unary|(InputIt begin, InputIt end, Unary f )|
+for_each_n|Unary|(InputIt begin, Numeric n, Unary f)|
+transform|OIterator|(SrcIterator begin, SrcIterator end, OIterator output, Transformation f(x)->y)|
+transform|OIterator|(SrcIterator xbegin, SrcIterator xend, YIterator ybegin, OIterator output, Callable f(x,y)->OIterator::value_type)|
+# ...to reorder
+reverse|void|(Iterator begin, Iterator end)|
+reverse_copy|Output|(Input begin, Input end, Output target)|
+rotate|FwIt c++11|(FwIt begin, FwIt new_begin, FwIt last)|
+rotate|void c++03|(FwIt begin, FwIt new_begin, FwIt last)|
+rotate_copy|Output|(Input begin, Input new_begin, Input last, Output target)|
+shift_left|Iterator new_end|(Iterator begin, Iterator end, difference_type n)|
+shift_right|Iterator new_begin|(Iterator begin, Iterator end, difference_type n)|
+sort|void|(Iterator begin, Iterator end, Predicate less(x,y)->bool)|
+partial_sort|void|(RIt begin, RIt middle, RIt end, Less lt)|
+stable_sort|void|(RIt begin, RIt pivot, RIt end, Less lt)|
+partition|BidiIt|(BidiIt begin, BidiIt end, Predicate select)|
+stable_partition|BidiIt|(BidiIt begin, BidiIt end, Predicate select)|
+partition_point|FwI|(FwI begin, FwI end, Predicate select)|
+next_permutation|bool|(BidiIt begin, BidiIt end, Less lt)|
+prev_permutation|bool|(BidiIt begin, BidiIt end, Less lt)|
+is_permutation|bool|(FwI1 begin1, FwI1 end1, FwI2 begin2, Equality eq)|
+is_permutation|bool|(FwI1 begin1, FwI1 end1, FwI2 begin2, FwI2 end2, Equality eq)|
+#random_shuffle (PENDING)
+# ...to find or compare a subsequence
+search|FwI|(FwI begin, FwI end, SubseqIter seq_begin, SubseqIter seq_end)|Searches instance of a subsequence
+search|FwI|(FwI begin, FwI end, SubseqIter seq_begin, SubseqIter seq_end, Equality eq)|Searches instance of a subsequence
+search_n|FwI|(FwI begin, FwI end, Integer count_n, T const& value)|
+search_n|FwI|(FwI begin, FwI end, Integer count_n, Equality eq)|
+find_end|FwI|(FwI begin, FwI end, SrcIter seq_begin, SrcIter seq_end)|Finds last ocurrence of subsequence
+find_end|FwI|(FwI begin, FwI end, SrcIter seq_begin, SrcIter seq_end, Equality eq)|Finds last ocurrence of subsequence
+# ...to trade sequences
+iter_swap|void|(Iterator a, Iterator b )|
+swap_ranges|FwI2|(FwI1 begin1, FwI1 end1, FwI2 begin2)|
+# ...to create sets (PENDING)
+# ...to create heaps (PENDING)
+#
+# <functional>
+ref|reference_wrapper<T>|(T &object)|Wraps a reference to an object
+cref|reference_wrapper<T const>|(T const &object)|Wraps a reference to an object
+bind1st|binder1st<F>|(functionlike&, arg1)|deprecated
+bind2nd|binder2nd<F>|(functionlike&, arg2)|deprecated
+ptr_fun|pointer_to_unary_function<Arg,R>|(R(*function)(Arg))|c++03
+ptr_fun|pointer_to_binary_function<Arg1,Arg2,R>|(R(*function)(Arg1,Arg2))|c++03
+mem_fn|[function object]|(functiontype Class::* funtion_pointer)|Wraps a member function as a function-like object
+mem_fn|[function object]|(membertype Class::* member_pointer)|Wraps access to a member variable as a function-like object
+mem_fun_t|[function object]|(Class::*function_member)|deprecated
+bind|[function object]|(functionlike&&, arguments...)|c++03
+bind|[function object]|<R,F>(functionlike&&, arguments...)|c++03
+bind_front|[function object]|(functionlike&&, arguments...)|c++20
+function|function<fn_prototype>|(function pointer or functoid)|Wraps a function as a function-like object
+is_placeholder|bool|(argument or _placeholder)|
+not_fn|[function_object]|(functionlike&&)|c++17
+invoke|deduced type|(Functor, args...)|c++17
+#
+# <iterator>
+advance|void|(Iterator& p, difference_type n)|Advances an iterator
+distance|difference_type|(Iterator p1, Iterator p2)|Calculates distance between two iterators
+begin|iterator type|(Range r[begin,end) )|Begin of a sequence
+end|iterator type|(Range r[begin,end] )|End of a sequence
+cbegin|const_iterator type|(Range r[begin,end) )|
+cend|const_iterator type|(Range r[begin,end) )|
+next|Iterator|(Iterator p, difference_type n)|Moves forwards from an iterator
+prev|Iterator|(Iterator p, difference_type n)|Moves backwards from an iterator
+size|size_t|(Containerlike)|
+data|pointer|(Containerlike)|
+empty|bool|(Containerlike)|
+ssize|signed integer|(Containerlike)|
+back_inserter|back_insert_iterator<Container>|(Container& c)|
+front_inserter|front_insert_iterator<Container>|(Container& c)|
+make_reverse_iterator|reverse_iterator<Iter>|(Iter i)|
+make_move_iterator|move_iterator<Iter>|(Iter i)|
+#
+# <memory>
+addressof|T*|(T &object)|Finds the address in memory of an object
+align|void*|(size_t alignment, size_t size, void*& ptr, size_t& space)|
+# ...raw memory management
+uninitialized_default_construct|void|(MemoryIter begin, MemoryIter end)|
+uninitialized_default_construct_n|MemoryIter end|(MemoryIter begin, Integral n)|
+uninitialized_copy|MemoryIter|(InputIter begin, InputIter end, MemoryIter begin_uninitialized )|
+uninitialized_copy_n|MemoryIter|(InputIter begin, Integral n, MemoryIter begin_uninitialized )|
+uninitialized_fill|void|(MemoryIter begin, MemoryIter end, T const& value )|
+uninitialized_fill_n|void|(MemoryIter begin, Integral n, T const& value )|
+uninitialized_move|MemoryOutput|(MemoryInput begin, MemoryInput end, MemoryOutput dest)|
+get_temporary_buffer|pair< T*, ptrdiff_t >|( std::ptrdiff_t count )|
+return_temporary_buffer|void|(T*)|
+destroy|void|(MemoryIter begin, MemoryIter end)|
+destroy_n|MemoryIter|(MemoryIter begin, Integral n)|
+destroy_at|void|( T* p )|Destroys as if by a destructor call
+# ...smart pointers
+make_shared|shared_ptr<Type>|(Args&&... args)|
+make_shared|shared_ptr<Type is []>|(size_t n)|
+make_unique|unique_ptr<Type>|(Args&&... args)|
+make_unique|unique_ptr<Type is []>|(size_t n)|unique_ptr<Type[]>({T{}, T{}, ...})
+make_unique_for_overwrite|unique_ptr<Type>|()|
+make_unique_for_overwrite|unique_ptr<Type[]>|(size_t n)|
+allocate_shared|shared_ptr<Type>|(Allocator const& alloc, arguments...)|
+allocate_shared|shared_ptr<Type is []>|(Allocator const& alloc, size_t n)|
+get_deleter|deleter_type*|(shared_ptr<T> const&)|Provides access to a managed resource's deleter
+# ...static pointer casts
+static_pointer_cast|shared_ptr<T>|(shared_ptr<U> const&) noexcept|
+dynamic_pointer_cast|shared_ptr<T>|(shared_ptr<U> const&) noexcept|
+# 
+# <numeric>
+accumulate|Numeric|(Iterator begin, Iterator end, Numeric v0)|Folds a sequence
+accumulate|T|(Iterator begin, Iterator end, T v0, LeftAccumulator f(s,xn)->s)|Folds a sequence
+adjacent_difference|OIterator[seq_of_differences]|(Iterator begin, Iterator end, OIterator target, Operator diff(x,y)->T)|
+inner_product|Numeric|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, Numeric v0)|
+inner_product|T|(Iterator1 begin1, Iterator1 end1, Iterator2 begin2, T v0, Operator sum(T,T)->T, Operator product(T,T)->T )|
+iota|void|(Iterator begin, Iterator end, T value )|Fills a sequence incrementally
+partial_sum|OIterator[seq_of_sums]|(Iterator begin, Iterator end, OIterator target)|
+partial_sum|OIterator[seq_of_sums]|(Iterator begin, Iterator end, OIterator target, Operator sum(x,y)->T)|
+gcd|Integer|(Integer m, Integer n)|
+lcm|Integer|(Integer m, Integer n)|
+#
+# <random>
+generate_canonical|Real|<Real,bits>(Generator&)|
+#
+# <regex>
+#
+# <ios>, <iomanip>, <iostream>
+setbase|(streamable)|(int = {8, 10, 16})|
+setfill|(streamable)|(stream_char = ' ')|
+setprecision|(streamable)|(int precision)|
+setw|(streamable)|(int field_width = 0)|
+setiosflags|(streamable)|( std::ios_base::fmtflags )|
+resetiosflags|(streamable)|( std::ios_base::fmtflags )|
+get_time|(in-streamable)|(tm* storage, stream_char* format)|Reads POSIX-formatted time/date.
+put_time|(out-streamable)|(tm const* storage, stream_char* format)|Writes POSIX-formatted time/date.
+#
+# <system_error>
+generic_category|error_category("generic")|() noexcept|
+system_category|error_category("system")|() noexcept|
+make_error_code|error_code|(std::errc c)|
+make_error_condition|error_condition|(std::errc c)|
+#
+# <tuple>
+make_tuple|tuple<T0,T1,...>|(T0 a0, T1 a1, ...)|Wraps various objects in a tuple
+forward_as_tuple|tuple<Types&&...>|<Types&&...>(types&&...)|
+tie|tuple<A0&,A1&,...>|(tuple<A0,A1,...>)|Ties a tuple into references to objects
+make_from_tuple|T|<T>(Args... args)|
+get<k>|A_k|<k>(tuple<A0,...,A_k,...>)|Gets the 'k'th element of a tuple
+get|A_k|<k>(tuple<A0,...,A_k,...>)|Gets the 'k'th element of a tuple
+get|A_k|<type>(tuple<A0...,A_k,...>)|Gets the element with type 'type'
+apply|__undetermined__|(Functor& f, tuple args...)|
+#
+# <type_traits>
+#
+# <utility>
+swap|void|(T& ta, T& tb)|Swaps two values
+make_pair|pair<A,B>|(A a, B b)|Wraps two objects in a pair
+declval|T&&|<T>()|Obtains a reference in unevaluated context
+exchange|T|(T& obj, T&& new_value)|
+move|referenceless(T)&&|(T&& to_be_moved)|Turns a variable into a rvalue-reference
+forward|T&&|(referenceless(T)& to_be_forwarded)|
+as_const|T const&|(T const? &)|Returns a const view of an object
+in_range|<T> bool|(U u -> T?)|
+#
+# <cmath>, <ccomplex>
+#
+# end
